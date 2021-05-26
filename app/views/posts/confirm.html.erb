@@ -1,0 +1,11 @@
+<%= render 'header' %>
+<article class="inner">
+<h3>以下のつぶやきを保存します。</h3>
+<%= form_with(model: @post, url: posts_path, method: :post, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <p>つぶやき:<%= @post.content %></p>
+  <%= form.submit  "保管する" %>
+  <%= form.submit '戻る', name: 'back' %>
+<% end %>
+</article>
+<%= render 'footer' %>

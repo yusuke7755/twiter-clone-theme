@@ -1,0 +1,24 @@
+<%= render 'header' %>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<article class="inner">
+  <p><%= notice %></p>
+  <table>
+    <tr>
+      <th colspan="4">
+        <h2>いま何を考えている？</h2>
+        <p><%= link_to 'つぶやく', new_post_path %></p>
+      </th>
+    </tr>
+    <% @post.each do |post| %>
+    <tr>
+      <td><%= post.content %>
+        <p class="btn_block">
+          <span class="edit"><td><%= link_to "つぶやきを編集する", edit_post_path(post.id)  %></td>
+          <span class="delete"><td><%= link_to 'つぶやきを削除する', post_path(post.id), method: :delete ,data: { confirm: 'このつぶやきは消しましょうか？' } %></td>
+        </p>
+      </td>
+    </tr>
+<% end %>
+</table>
+</article>
+<%= render 'footer' %>

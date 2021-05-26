@@ -1,0 +1,22 @@
+<%= render 'header' %>
+<article class="inner">
+<%= form_with(model: @post, local: true ,url: choose_new) do |form| %>
+<h2>つぶやきを書く</h2>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= @post.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="post_content">
+    <p><%= form.label "今、思っていること" %></p>
+    <p id="inquiry"><%= form.text_area  :content %></p>
+  </div>
+  <p><%= form.submit value="保管する" %></p>
+<% end %>
+</article>
+<%= render 'footer' %>
